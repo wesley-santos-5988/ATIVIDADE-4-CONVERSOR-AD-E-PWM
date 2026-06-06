@@ -28,12 +28,12 @@ int main() {
     adc_select_input(CANAL_ADC_Y); 
 
     while (true) {
-        // Leitura do eixo Y do joystick (0 a 4096)
+        // Leitura do eixo Y do joystick (0 a 4095)
         uint16_t valor_y = adc_read();
 
         // Conversão do valor do ADC para o pulso do PWM (544us a 2400us)
         // Regra de três invertida para alinhar o movimento físico
-        uint32_t pulso_motor = 2400 - ((uint32_t)valor_y * 1856 / 4096);
+        uint32_t pulso_motor = 2400 - ((uint32_t)valor_y * 1856 / 4095);
 
         // Atualiza a posição do motor
         pwm_set_gpio_level(PINO_SERVOMOTOR, pulso_motor);
