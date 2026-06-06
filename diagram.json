@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "author": "Wesley Santos",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-pi-pico-w",
+      "id": "pico",
+      "top": -3.25,
+      "left": 3.55,
+      "attrs": { "builder": "pico-sdk" }
+    },
+    { "type": "wokwi-servo", 
+      "id": "servo1", 
+      "top": -69.2, 
+      "left": 182.4, 
+      "attrs": {} },
+    {
+      "type": "wokwi-analog-joystick",
+      "id": "joystick1",
+      "top": 28.2,
+      "left": 139.8,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+    [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+    [ "servo1:V+", "pico:3V3", "red", [ "h-67.2", "v57.7" ] ],
+    [ "pico:GND.8", "servo1:GND", "#8f4814", [ "h29.11", "v-48" ] ],
+    [ "servo1:PWM", "pico:GP18", "orange", [ "h-57.6", "v9.8" ] ],
+    [ "pico:3V3", "joystick1:VCC", "green", [ "h57.91", "v105.6" ] ],
+    [ "joystick1:VERT", "pico:GP26", "green", [ "v9.6", "h-67.2", "v-67.2" ] ],
+    [ "pico:GP27", "joystick1:HORZ", "green", [ "h29.11", "v67.2", "h86.4" ] ],
+    [ "pico:GP22", "joystick1:SEL", "green", [ "h19.51", "v57.6", "h105.6" ] ],
+    [ "joystick1:GND", "pico:GND.6", "black", [ "v38.4", "h-124.8", "v-57.6" ] ]
+  ],
+  "dependencies": {}
+}
